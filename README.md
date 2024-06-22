@@ -1,4 +1,4 @@
-# Masked Language Modeling with Mosaic BERT model on the Sagemaker Pipeline proof of concept
+# Masked Language Modeling with Mosaic BERT model on Sagemaker Pipeline 
 This project combines the BERT training process (including pre-training and fine-tuning) with 
 SageMaker's Pipeline framework. 
 
