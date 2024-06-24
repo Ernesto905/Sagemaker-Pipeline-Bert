@@ -38,9 +38,23 @@ from utilities.logger import Logger
 ### self.logger = Logger(_conf)                                                      ###
 ########################################################################################
 
-session = boto3.session.Session()
-region_name = session.region_name
-client_sagemaker_obj = boto3.client("sagemaker", region_name=region_name)
+# Authentication logic
+aws_region = os.environ.get('AWS_REGION')
+aws_profile = os.environ.get('AWS_PROFILE')
+
+if aws_region is None:
+    raise ValueError("AWS_REGION environment variable is not set")
+
+if aws_profile is None:
+    raise ValueError("AWS_PROFILE environment variable is not set")
+
+session = boto3.Session(profile_name=aws_profile)
+client_sagemaker_obj = session.client('sagemaker', region_name=aws_region)
+
+
+# session = boto3.session.Session()
+# region_name = session.region_name
+# client_sagemaker_obj = boto3.client("sagemaker", region_name=aws_region)
 
 
 class ModelMetricsService:
