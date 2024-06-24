@@ -7,7 +7,7 @@ conf:
             train:
                 instance_type: ml.g5.48xlarge
                 image_uri: "mosaicml/pytorch:1.13.1_cu117-python3.10-ubuntu20.04"
-                entry_point: sagemaker-train/bert/main.py
+                entry_point: sagemaker-train/bert/pre_train.sh
                 base_job_name: bert-pre-training
                 max_runtime_seconds: 18000
 
@@ -15,9 +15,16 @@ conf:
             train:
                 instance_type: ml.g5.48xlarge
                 image_uri: "mosaicml/pytorch:1.13.1_cu117-python3.10-ubuntu20.04"
-                entry_point: sagemaker-train/bert/sequence_classification.py
+                entry_point: sagemaker-train/bert/fine_tune.sh
                 base_job_name: bert-fine-tuning
                 max_runtime_seconds: 18000
+
+            # train:
+            #     instance_type: ml.g5.48xlarge
+            #     image_uri: "mosaicml/pytorch:1.13.1_cu117-python3.10-ubuntu20.04"
+            #     entry_point: sagemaker-train/bert/glue.py
+            #     base_job_name: bert-glue-fine-tuning
+            #     max_runtime_seconds: 18000
 
     sagemakerPipeline:
         pipelineName: mosaic-bert-transfer-learning-pipeline 
