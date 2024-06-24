@@ -19,7 +19,7 @@ from utils import SynthTextDirectory
 @pytest.mark.parametrize('model_name,seed', [('mosaic_bert', 17),
                                              ('hf_bert', 18)])
 def test_trainer(model_name: str, seed: int):
-    with open('tests/smoketest_config_main.yaml') as f:
+    with open('smoketest_config_main.yaml') as f:
         config = OmegaConf.load(f)
     assert isinstance(config, DictConfig)
     config.model.name = model_name
