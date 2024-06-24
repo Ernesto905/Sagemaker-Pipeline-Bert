@@ -21,7 +21,7 @@ conf:
 
             # train:
             #     instance_type: ml.g5.48xlarge
-            #     image_uri: "mosaicml/pytorch:1.13.1_cu117-python3.10-ubuntu20.04"
+            #     image_uri: "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${ECR_REPO}:${ECR_TAG}"
             #     entry_point: sagemaker-train/bert/glue.py
             #     base_job_name: bert-glue-fine-tuning
             #     max_runtime_seconds: 18000
