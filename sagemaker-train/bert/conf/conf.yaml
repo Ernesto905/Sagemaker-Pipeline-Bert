@@ -2,12 +2,12 @@
 conf:
     models:
         mosaic-bert:
-            source_directory: sagemaker-train/bert  
+            source_directory: "../bert"
 
             train:
                 instance_type: ml.g5.48xlarge
                 image_uri: "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${ECR_REPO}:${ECR_TAG}"
-                entry_point: sagemaker-train/bert/pre_train.sh
+                entry_point: pre_train.sh
                 base_job_name: bert-pre-training
                 max_runtime_seconds: 18000
 
@@ -15,7 +15,7 @@ conf:
             train:
                 instance_type: ml.g5.48xlarge
                 image_uri: "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${ECR_REPO}:${ECR_TAG}"
-                entry_point: sagemaker-train/bert/fine_tune.sh
+                entry_point: fine_tune.sh
                 base_job_name: bert-fine-tuning
                 max_runtime_seconds: 18000
 
